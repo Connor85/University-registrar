@@ -61,5 +61,25 @@ namespace Admissions.TestTools
       //Assert
       Assert.AreEqual(newStudent, foundStudent);
     }
+
+    [TestMethod]
+    public void Edit_EditedItemHasNewName_True()
+    {
+      //Arrange
+      DateTime date = new DateTime(2018,11,11);
+      Student newStudent = new Student("Ryan", date);
+      newStudent.Save();
+
+      //Act
+      string newName = "Connor";
+      newStudent.Edit(newName, date);
+      string compareName = newStudent.GetName();
+
+      //Assert
+      Assert.AreEqual(newName, compareName);
+    }
+
+    
+
   }
 }

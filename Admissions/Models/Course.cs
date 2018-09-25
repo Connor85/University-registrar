@@ -49,5 +49,32 @@ namespace Admissions.Models
       }
     }
 
+    public static List<Course> GetAll()
+    {
+      List<Course> allCourses = new List<Course>() {};
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM courses;";
+
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+      while(rdr.Read())
+      {
+        int id = rdr.GetInt32(0);
+        string name = rdr.GetString(1);
+        string courseNumber = rdr.GetString(2);
+        Course newCourse = new Course(name, courseNumber, id);
+        allCourses.Add(newCourse);
+      }
+
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return allCourses;
+    }
+
   }
 }
