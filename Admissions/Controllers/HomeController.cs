@@ -10,7 +10,8 @@ namespace Admissions.Controllers
     [HttpGet("/")]
     public ActionResult Index()
     {
-      return View();
+      List<Course> allCourses = Course.GetAll();
+      return View(allCourses);
     }
   }
 }

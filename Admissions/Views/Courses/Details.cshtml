@@ -1,0 +1,11 @@
+<h1>@Model.GetName()</h1>
+<h2>Students attending this course:</h2>
+<ul>
+  @foreach (var student in Model.GetStudents())
+  {
+    <a href="/students/@student.GetId()/"><li>@student.GetName()</li></a>
+  }
+</ul>
+<hr>
+<a href="/" class="btn btn-success">Home Page</a>
+

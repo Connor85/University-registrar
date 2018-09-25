@@ -1,0 +1,32 @@
+<h1>Welcome to Epicodus University Database</h1>
+@if (Model.Count != 0)
+{
+  <h2>Available Courses</h2>
+  <ul>
+    @foreach (var course in Model)
+    {
+      <li><a href="/courses/@course.GetId()">@course.GetName()</a></li>
+    }
+  </ul>
+}
+<h3>ADD COURSE</h3>
+<form action="/courses/new" method="post">
+  <label for="newName">Course Name: </label>
+  <input id="newName" name="newName" type="text">
+  <label for="newCourseNumber">Course Number: </label>
+  <input id="newCourseNumber" name="newCourseNumber" type="text">
+  <button type="submit" class="btn btn-success">Add Course</button>
+</form>
+
+<hr>
+
+<a href="/students/directory" class="btn btn-warning">Student Directory</a>
+
+<h3>ADD STUDENT</h3>
+<form action="/students/new" method="post">
+  <label for="newStudentName">Student Name: </label>
+  <input id="newStudentName" name="newStudentName" type="text">
+  <label for="newEnrollmentDate">Enrollment Date: </label>
+  <input id="newEnrollmentDate" name="newEnrollmentDate" type="date">
+  <button type="submit" class="btn btn-info">Add Student</button>
+</form>

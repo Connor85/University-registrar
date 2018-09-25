@@ -1,0 +1,7 @@
+<h1>Epicodus Students</h1>
+<ul>
+@foreach(var student in Model)
+{
+  <li><a href="/students/@student.GetId()/">@student.GetName()</a></li>
+}
+</ul>
