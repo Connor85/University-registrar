@@ -54,7 +54,7 @@ namespace Admissions.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"DELETE * FROM courses WHERE id = @searchId; DELETE * FROM students_courses WHERE course_id = @searchId;";
+      cmd.CommandText = @"DELETE FROM courses WHERE id = @searchId; DELETE FROM students_courses WHERE course_id = @searchId;";
 
       cmd.Parameters.AddWithValue("@searchId", _id);
 

@@ -44,5 +44,13 @@ namespace Admissions.Controllers
       foundCourse.AddStudent(foundStudent);
       return RedirectToAction("Details", new {id = id});
     }
+
+    [HttpGet("/students/{id}/delete")]
+    public ActionResult DeleteStudent(int id)
+    {
+      Student foundStudent = Student.Find(id);
+      foundStudent.Delete();
+      return RedirectToAction("Index");
+    }
   }
 }

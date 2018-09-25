@@ -22,5 +22,12 @@ namespace Admissions.Controllers
       return View(foundCourse);
     }
 
+    [HttpGet("/courses/{id}/delete")]
+    public ActionResult Delete(int id)
+    {
+     Course foundCourse =Course.Find(id);
+     foundCourse.Delete();
+     return RedirectToAction("Index","Home");
+    }
   }
 }
